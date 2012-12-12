@@ -11,7 +11,7 @@ pkgname=('linux-kirkwood' 'linux-headers-kirkwood')
 _kernelname=${pkgname#linux}
 _basekernel=3.7
 pkgver=${_basekernel}
-pkgrel=5
+pkgrel=6
 cryptover=1.5
 arch=('arm')
 url="http://www.kernel.org/"
@@ -25,15 +25,20 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.x/linux-${_basekernel}.tar.bz2
         'mach-types::http://www.arm.linux.org.uk/developer/machines/download.php'
         'change-default-console-loglevel.patch'
         'usb-add-reset-resume-quirk-for-several-webcams.patch'
-        "http://download.gna.org/cryptodev-linux/cryptodev-linux-${cryptover}.tar.gz")
+        "http://download.gna.org/cryptodev-linux/cryptodev-linux-${cryptover}.tar.gz"
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.7.0-v5r1/0001-block-cgroups-kconfig-build-bits-for-BFQ-v5r1-3.7.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.7.0-v5r1/0002-block-introduce-the-BFQ-v5r1-I-O-sched-for-3.7.patch')
 md5sums=('5323f3faadd051e83af605a63be5ea2e'
          'c2d81cd45dc78e92af4f13fb8e5065b6'
          'f5d3635da03cb45904bedd69b47133de'
-         '9701ac075585ff9dbae947a121e9b2b7'
+         '84d01761b3e369979665cf506e1397dd'
          '9506a43fff451fda36d5d7b1f5eaed04'
          '9d3c56a4b999c8bfbd4018089a62f662'
          'd00814b57448895e65fbbc800e8a58ba'
-         '3a4b8d23c1708283e29477931d63ffb8')
+         '3a4b8d23c1708283e29477931d63ffb8'
+         '9daa5f662145f91b25b91b9fbeb874d9'
+         'c80954ae588d8c168a0b1ae9ffe84c0e')
+
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -47,6 +52,11 @@ build() {
   patch -Np1 -i "${srcdir}/support.patch"
   cp "${srcdir}/mach-types" arch/arm/tools
 
+  
+  # Add BFQ patches
+  patch -Np1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v5r1-3.7.patch"
+  patch -Np1 -i "${srcdir}/0002-block-introduce-the-BFQ-v5r1-I-O-sched-for-3.7.patch"
+  
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
