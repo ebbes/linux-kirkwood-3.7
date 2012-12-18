@@ -9,9 +9,9 @@ pkgbase=linux-kirkwood
 pkgname=('linux-kirkwood' 'linux-headers-kirkwood')
 #pkgname=linux-test       # Build kernel with a different name
 _kernelname=${pkgname#linux}
-_basekernel=3.7
+_basekernel=3.7.1
 pkgver=${_basekernel}
-pkgrel=6
+pkgrel=1
 cryptover=1.5
 arch=('arm')
 url="http://www.kernel.org/"
@@ -28,7 +28,7 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.x/linux-${_basekernel}.tar.bz2
         "http://download.gna.org/cryptodev-linux/cryptodev-linux-${cryptover}.tar.gz"
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.7.0-v5r1/0001-block-cgroups-kconfig-build-bits-for-BFQ-v5r1-3.7.patch'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.7.0-v5r1/0002-block-introduce-the-BFQ-v5r1-I-O-sched-for-3.7.patch')
-md5sums=('5323f3faadd051e83af605a63be5ea2e'
+md5sums=('da6ee53b4389e5ce44ab8fc165a7143b'
          'c2d81cd45dc78e92af4f13fb8e5065b6'
          'f5d3635da03cb45904bedd69b47133de'
          '84d01761b3e369979665cf506e1397dd'
