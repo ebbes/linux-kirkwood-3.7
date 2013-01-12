@@ -9,7 +9,7 @@ pkgbase=linux-kirkwood
 pkgname=('linux-kirkwood' 'linux-headers-kirkwood')
 #pkgname=linux-test       # Build kernel with a different name
 _kernelname=${pkgname#linux}
-_basekernel=3.7.1
+_basekernel=3.7.2
 pkgver=${_basekernel}
 pkgrel=1
 cryptover=1.5
@@ -18,7 +18,7 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'uboot-mkimage')
 options=('!strip')
-source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.x/linux-${_basekernel}.tar.bz2"
+source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.x/linux-${_basekernel}.tar.xz"
         'ebbes-kirkwood.patch'
         'support.patch'
         'config'
@@ -28,10 +28,10 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.x/linux-${_basekernel}.tar.bz2
         "http://download.gna.org/cryptodev-linux/cryptodev-linux-${cryptover}.tar.gz"
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.7.0-v5r1/0001-block-cgroups-kconfig-build-bits-for-BFQ-v5r1-3.7.patch'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.7.0-v5r1/0002-block-introduce-the-BFQ-v5r1-I-O-sched-for-3.7.patch')
-md5sums=('da6ee53b4389e5ce44ab8fc165a7143b'
+md5sums=('a6bad0280df3bfec8f91c9aa375826a5'
          'c2d81cd45dc78e92af4f13fb8e5065b6'
          'f5d3635da03cb45904bedd69b47133de'
-         '84d01761b3e369979665cf506e1397dd'
+         '957d6081b00162228b40b9aba2deff97'
          '9506a43fff451fda36d5d7b1f5eaed04'
          '9d3c56a4b999c8bfbd4018089a62f662'
          'd00814b57448895e65fbbc800e8a58ba'
